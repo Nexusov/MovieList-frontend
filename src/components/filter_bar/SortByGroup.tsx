@@ -18,7 +18,7 @@ const SortByGroup = () => {
   }, [])
 
   const toggleDropdown = () => setIsOpen(isOpen => !isOpen);
-  const toggleReverse= () => setIsReversed(isReversed => !isReversed);
+  const toggleReverse = () => setIsReversed(isReversed => !isReversed);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as Node)) {
