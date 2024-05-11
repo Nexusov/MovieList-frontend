@@ -1,0 +1,70 @@
+@import '/src/vars.scss';
+
+.filterButton, .listSwitcherButton, .listControlButton, .controlIcon  {
+  background-color: $dark-button-color;
+  transition: scale ease 0.2s;
+  border-radius: 10px;
+
+  &.active {
+    outline: 2px solid white;
+    background-color: #313131;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); 
+  
+    &:active, &:focus {
+      outline: 2px solid white;
+    } 
+  }
+
+  &:hover {
+    background-color: #363636;
+    scale: 1.05;
+  }
+
+  &:active {
+    background-color: $dark-button-color-active;
+  }
+}
+
+.navButton {
+  background-color: $dark-button-color;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: background-color 0.1s linear;
+
+  &:hover {
+    background-color: $dark-button-color-hover;
+  }
+
+  &:active {
+    background-color: $dark-button-color-active;
+  }
+}
+
+.filterButton {
+  padding: 20px 30px;
+}
+
+.listSwitcherButton {
+  padding: 30px 60px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.listControlButton {
+  padding: 10px 20px;
+  
+  &:hover { 
+    scale: none;
+  }
+}
+
+.controlIcon {
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  &:hover { 
+    scale: none;
+  }
+}
+

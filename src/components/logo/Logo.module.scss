@@ -1,0 +1,29 @@
+@import '/src/vars.scss';
+
+.logo {
+  transition: stop-color, transform linear 0.1s; 
+
+  &:hover {
+    transform: scale(1.2);
+
+    stop:first-child {
+      stop-color: #FFA500; 
+    }
+
+    stop:last-child {
+      stop-color: #FF4500;
+    }
+  }
+
+  &:active {
+    transform: scale(1);
+
+    stop:first-child {
+      stop-color: #63FFF6; 
+    }
+  
+    stop:last-child {
+      stop-color: #3B6C99; 
+    }
+  }
+}

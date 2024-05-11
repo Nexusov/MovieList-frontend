@@ -1,0 +1,12 @@
+@import '/src/vars.scss';
+
+.viewTypeControlGroup {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.viewTypeButtons {
+  display: flex;
+  gap: 5px
+}
