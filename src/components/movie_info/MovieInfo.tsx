@@ -31,9 +31,9 @@ const MovieInfo: React.FC<MovieInfoProps> = ({ movie, onClose  }) => {
         <img className={styles.poster} draggable="false" src={posterURL} alt={`${title} poster`} />
         <p>Release Year: {releaseYear}</p>
         <p>Watched at: {watchedAt}</p>
-        <p>Your Rating: {userRating}</p>
-        <a href={imdbLink} target='_blank' title='IMDb rating'>IMDb: {imdbRating}</a>
-        <a href={kinopoiskLink} target='_blank' title='Kinopoisk rating'>КП: {kinopoiskRating}</a>
+        <p>Your Rating: {userRating.toFixed(1)}</p>
+        <a href={imdbLink} target='_blank' title='IMDb rating'>IMDb: {imdbRating.toFixed(1)}</a>
+        <a href={kinopoiskLink} target='_blank' title='Kinopoisk rating'>КП: {kinopoiskRating.toFixed(1)}</a>
         <button onClick={onClose}>✕</button>
       </div>
     </div>,

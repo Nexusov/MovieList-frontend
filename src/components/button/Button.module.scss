@@ -22,6 +22,7 @@
 
   &:active {
     background-color: $dark-button-color-active;
+    scale: 1;
   }
 }
 
@@ -53,16 +54,14 @@
 
 .listControlButton {
   padding: 10px 20px;
-  
-  &:hover { 
-    scale: none;
-  }
 }
 
 .controlIcon {
   padding: 5px 10px;
   border-radius: 5px;
+}
 
+.controlIcon, .listControlButton {
   &:hover { 
     scale: none;
   }

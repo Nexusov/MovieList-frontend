@@ -45,3 +45,5 @@ const SortByGroup = () => {
 }
 
 export default SortByGroup
+
+//! TODO: Make Dropdown as a React Portal. Replace handleClickOutside with PortalLayout onClick={closePortal}

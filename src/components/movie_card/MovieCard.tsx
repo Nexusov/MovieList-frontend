@@ -17,9 +17,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, openPortal }) => {
           <p className={styles.subTitle}>{releaseYear}</p>
           <p className={styles.subTitle}>Watched at {watchedAt}</p>
           <div className={styles.ratingContainer}>
-            <p title='Your rating'>You: {userRating}</p>
-            <a href={imdbLink} target='_blank' title='IMDb rating'>IMDb: {imdbRating}</a>
-            <a href={kinopoiskLink} target='_blank' title='Kinopoisk rating'>КП: {kinopoiskRating}</a>
+            <p title='Your rating'>You: {userRating.toFixed(1)}</p>
+            <a href={imdbLink} target='_blank' title='IMDb rating'>IMDb: {imdbRating.toFixed(1)}</a>
+            <a href={kinopoiskLink} target='_blank' title='Kinopoisk rating'>КП: {kinopoiskRating.toFixed(1)}</a>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ const movies: Movie[] = [
     imdbLink: 'https://www.imdb.com/title/tt15239678/',
     kinopoiskRating: 9.9,
     kinopoiskLink: 'https://www.kinopoisk.ru/film/4540126/',
-    posterURL: 'https://m.media-amazon.com/images/M/MV5BZjNhNzM3MjgtYTAyMC00NDVmLWFjYWUtNGUzOTg4YTI0MDFlXkEyXkFqcGdeQXVyNDM1ODc2NzE@._V1_QL75_UX380_CR0,4,380,562_.jpg',
+    posterURL: 'https://m.media-amazon.com/images/M/MV5BN2QyZGU4ZDctOWMzMy00NTc5LThlOGQtODhmNDI1NmY5YzAwXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_FMjpg_UY4096_.jpg',
   },
   {
     id: 2,
@@ -48,7 +48,6 @@ const MoviesContainer = () => {
         <MovieCard key={movie.id} movie={movie} openPortal={openPortal} />
       ))}
       {selectedMovie && <MovieInfo movie={selectedMovie} onClose={closePortal} />}
-
     </div>
   )
 }
