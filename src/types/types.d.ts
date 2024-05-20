@@ -1,16 +1,3 @@
-export interface Movie {
-  id: number;
-  title: string;
-  releaseYear: number;
-  watchedAt: string;
-  userRating: number;
-  imdbRating: number;
-  imdbLink: string;
-  kinopoiskRating: number;
-  kinopoiskLink: string;
-  posterURL: string;
-}
-
 export interface User {
   id: string;
   name: string;
@@ -18,30 +5,54 @@ export interface User {
   password: string;
 }
 
-export interface MovieOMDb {
-  Title: string;
-  Year: string;
-  Rated: string;
-  Released: string;
-  Runtime: string;
-  Genre: string;
-  Director: string;
-  Writer: string;
-  Actors: string;
-  Plot: string;
-  Language: string;
-  Country: string;
-  Awards: string;
-  Poster: string;
-  Ratings: Array<{ Source: string, Value: string }>;
-  Metascore: string;
-  imdbRating: string;
-  imdbVotes: string;
+export interface MediaItem {
   imdbID: string;
-  Type: string;
-  DVD: string;
-  BoxOffice: string;
-  Production: string;
-  Website: string;
-  Response: string;
+  kinopoiskID: number;
+  titleEn: string;
+  titleRu: string;
+  alternativeName: string | null;
+  year: string;
+  releasedDate: string;
+  runtime: number;
+  director: string;
+  writer: string;
+  descriptionEn: string;
+  shortDescrEn: string;
+  descriptionRu: string;
+  shortDescrRu: string;
+  ratingKp: number;
+  ratingIMDb: number;
+  ratingMetacritic: number;
+  posterURL: string;
+  previewUrl: string | null;
+  genres: string[];
+  type: string;
+  isSeries: boolean;
+  totalSeasons: number | null;
+}
+
+export interface SearchItem {
+  imdbID: string;
+  kinopoiskID: number;
+  titleEn: string,
+  titleRu: string,
+  year: string,
+  posterURL: string,
+  ratingKp: number;
+  ratingIMDb: number;
+  ratingMetacritic: number;
+  type: string;
+}
+
+export interface MovieSearchResponse {
+  docs: SearchItem[];
+  total: number;
+  limit: number;
+  page: number;
+  pages: number;
+}
+
+export interface FetchError extends Error {
+  status: number; 
+  message: string;
 }

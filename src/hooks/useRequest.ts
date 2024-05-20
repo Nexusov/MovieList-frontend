@@ -1,14 +1,10 @@
 import axios, { AxiosError } from 'axios';
 import useSWR, { SWRResponse } from 'swr';
+import { FetchError } from '../types/types';
 
 interface FetchResponse<T> extends SWRResponse<T, FetchError> {
   isLoading: boolean;
   isError: boolean;
-}
-
-interface FetchError extends Error {
-  status: number; 
-  message: string;
 }
 
 const baseURL = import.meta.env.VITE_BASE_API_URL;

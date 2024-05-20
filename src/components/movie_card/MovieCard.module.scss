@@ -10,6 +10,7 @@
   overflow: hidden;
   transition: box-shadow, transform 0.1s linear;
   cursor: pointer;
+  user-select: none;
 
   &:after {
     content: "";
@@ -56,6 +57,7 @@
   z-index: 1;
   width: 100%;
   font-weight: bold; 
+  user-select: text;
 }
 
 .title {

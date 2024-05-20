@@ -7,11 +7,14 @@
   background-color: $dark-button-color;
   border-radius: 10px;
   overflow: hidden;
+  transition: transform ease 0.3s;
+  position: relative;
 /*   flex-grow: 0.2; */
 
   &:focus-within {
     outline: 2px solid white;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); 
+    transform: scaleX(1.03);
   }
 
   button {
