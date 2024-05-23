@@ -1,7 +1,8 @@
 @import '/src/vars.scss';
 
 .logo {
-  transition: stop-color, transform linear 0.1s; 
+  transition: stop-color, transform linear 0.1s;
+  -webkit-user-drag: none; 
 
   &:hover {
     transform: scale(1.2);
