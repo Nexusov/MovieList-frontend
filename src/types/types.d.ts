@@ -3,6 +3,7 @@ export interface User {
   name: string;
   email: string;
   password: string;
+  photo: string
 }
 
 export interface MediaItem {
@@ -36,12 +37,14 @@ export interface SearchItem {
   kinopoiskID: number;
   titleEn: string,
   titleRu: string,
+  shortDescription: string,
   year: string,
   posterURL: string,
-  ratingKp: number;
-  ratingIMDb: number;
-  ratingMetacritic: number;
+  ratingKp: number | string;
+  ratingIMDb: number | string;
+  ratingMetacritic: number | string;
   type: string;
+  internalVotes: number;
 }
 
 export interface MovieSearchResponse {

@@ -8,9 +8,9 @@ const Home = () => {
 
   return (
     <LayoutTemplate section="Home Page with User's movie list">
-        <ListTypeSwitcher />
-        <FilterBar />
-        <MoviesContainer />
+      <ListTypeSwitcher />
+      <FilterBar />
+      <MoviesContainer />
     </LayoutTemplate>
   );
 };

@@ -1,11 +1,14 @@
 import { NavLink } from 'react-router-dom';
-import styles from './Header.module.scss'
-
 import SearchForm from '../search_form/SearchForm';
 import Button from '../button/Button';
 import Logo from '../logo/Logo';
+import { useAuthStore } from '../../store/store';
+import UserProfileButton from '../button/UserProfileButton';
+import SignInIcon from '../icons/SignInIcon';
+import styles from './Header.module.scss'
 
 const Header = () => {
+  const token = useAuthStore((state) => state.token);
 
   return (
     <header className={styles.header}>
@@ -15,7 +18,11 @@ const Header = () => {
       <SearchForm />
       <nav>
         <Button type='nav'>Add</Button>
-        <Button type='nav'>Login</Button>
+        {token ? (
+          <UserProfileButton />
+        ) : (
+          <NavLink to="/login" className={styles.loginButton}><SignInIcon />Sign in</NavLink>
+        )}
       </nav>
     </header>
   )

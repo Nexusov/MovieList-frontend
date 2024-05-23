@@ -7,13 +7,19 @@ import SearchResults from './SearchResults';
 
 const SearchForm = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const debouncedSearchTerm = useDebounce(searchTerm, 1000);
+  const debouncedSearchTerm = useDebounce(searchTerm.trim(), 1000);
   const { movieData, isLoading, isError, error } = GetMoviesBySearch(debouncedSearchTerm);
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
+    setModalOpen(true);
   };
-  console.log(movieData)
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <div>
       <form className={styles.searchForm} onSubmit={e => e.preventDefault()}>
@@ -27,9 +33,11 @@ const SearchForm = () => {
           <SearchIcon />
         </button>
       </form>
-      {debouncedSearchTerm && <SearchResults data={movieData} isLoading={isLoading} isError={isError} error={error} />}
+      {debouncedSearchTerm && isModalOpen && <SearchResults data={movieData} isLoading={isLoading} isError={isError} error={error} onClose={handleCloseModal} />}
     </div>
   );
 };
 
 export default SearchForm
+
+//! TODO: fix requests occur all the time + fix requests when page is loaded

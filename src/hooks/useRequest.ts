@@ -1,8 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import useSWR, { SWRResponse } from 'swr';
-import { FetchError } from '../types/types';
 
-interface FetchResponse<T> extends SWRResponse<T, FetchError> {
+interface FetchResponse<T> extends SWRResponse<T, AxiosError> {
   isLoading: boolean;
   isError: boolean;
 }
@@ -27,7 +26,7 @@ const _fetcher = async <T>(url: string): Promise<T> => {
 };
 
 const useRequest = <T>(key: string): FetchResponse<T> => {
-  const { data, error, mutate, isValidating, isLoading } = useSWR<T, FetchError>(baseURL + key, _fetcher);
+  const { data, error, mutate, isValidating, isLoading } = useSWR<T, AxiosError>(baseURL + key, _fetcher);
   const isError = error !== undefined;
 
   return { data, error, mutate, isLoading, isError, isValidating };

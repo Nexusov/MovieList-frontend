@@ -7,10 +7,33 @@
   padding: 10px 20px;
   background-color: $secondary-dark-color;
   gap: 10px;
+  z-index: 110;
 
   nav {
     display: flex;
     align-items: center;
     gap: 20px;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+.loginButton {
+  background-color: $dark-button-color;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: background-color 0.1s linear;
+
+  &:hover {
+    background-color: $dark-button-color-hover;
+  }
+
+  &:active {
+    background-color: $dark-button-color-active;
   }
 }

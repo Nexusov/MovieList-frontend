@@ -8,6 +8,7 @@ export const transformUser = (user: User | undefined): User | undefined => {
     name: user.name,
     email: user.email,
     password: user.password,
+    photo: user.photo
   }
 }
 
@@ -44,16 +45,20 @@ export const transformMovie = (movie: MediaItem | undefined): MediaItem | undefi
 export const transformSearchItem = (movie: SearchItem | undefined): SearchItem | undefined  => {
   if (!movie) return
 
+  const defaultPosterURL = 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg'
+
   return {
     imdbID: movie.imdbID,
     kinopoiskID: movie.kinopoiskID,
     titleEn: movie.titleEn,
     titleRu: movie.titleRu,
-    year: movie.year,
-    posterURL: movie.posterURL,
-    ratingKp: movie.ratingKp,
-    ratingIMDb: movie.ratingIMDb,
-    ratingMetacritic: movie.ratingMetacritic,
+    shortDescription: movie.shortDescription,
+    year: movie.year || 'N/A',
+    posterURL: movie.posterURL || defaultPosterURL,
+    ratingKp: movie.ratingKp || 'N/A',
+    ratingIMDb: movie.ratingIMDb || 'N/A',
+    ratingMetacritic: movie.ratingMetacritic || 'N/A',
     type: movie.type,
+    internalVotes: movie.internalVotes,
   }
 }

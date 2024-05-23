@@ -41,7 +41,7 @@ const MoviesContainer = () => {
   return (
     <div className={styles.container}>
       {movies.map(movie => (
-        <MovieCard key={movie.id} movie={movie} openPortal={openPortal} />
+        <MovieCard key={movie.imdbID} movie={movie} openPortal={openPortal} />
       ))}
       {selectedMovie && <MovieInfo movie={selectedMovie} onClose={closePortal} />}
     </div>

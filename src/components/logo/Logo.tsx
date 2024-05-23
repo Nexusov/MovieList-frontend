@@ -1,6 +1,5 @@
 import styles from './Logo.module.scss'
 
-
 const Logo = () => {
   return (
     <svg width="35" height="26" viewBox="0 0 35 26" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.logo}>

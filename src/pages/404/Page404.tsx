@@ -9,3 +9,5 @@ const Page404 = () => {
 }
 
 export default Page404
+
+//! TODO: Make this page more beauty
