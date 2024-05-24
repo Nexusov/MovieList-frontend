@@ -1,1 +1,7 @@
 @import '/src/vars.scss';
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

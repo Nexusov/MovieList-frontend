@@ -4,6 +4,7 @@ import s from './UserProfileButton.module.scss'
 
 const UserProfileButton: React.FC = () => {
   const user = useAuthStore((state) => state.user);
+  const defaultAvatarURL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png'
 
   if (!user) {
     return null;
@@ -11,8 +12,8 @@ const UserProfileButton: React.FC = () => {
 
   return (
     <Link to="/profile" className={s.profileButton}>
-      <img src={user.photo} alt={`${user}'s avatar`} className={s.avatar} />
-      <span>{user.name}</span>
+      <img src={user.photo ?? defaultAvatarURL} alt={`${user}'s avatar`} className={s.avatar} />
+      <span>{user.name ?? 'Your Name'}</span>
     </Link>
   );
 };

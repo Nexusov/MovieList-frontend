@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Button from '../button/Button'
 import DropdownIcon from '../icons/DropdownIcon'
 import styles from './SortByGroup.module.scss'
-import Dropdown from '../Dropdown/Dropdown';
+import Dropdown from '../dropdown/Dropdown';
 import SortReverseIcon from '../icons/SortReverseIcon';
 
 const SortByGroup = () => {

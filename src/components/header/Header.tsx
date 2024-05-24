@@ -6,6 +6,7 @@ import { useAuthStore } from '../../store/store';
 import UserProfileButton from '../button/UserProfileButton';
 import SignInIcon from '../icons/SignInIcon';
 import styles from './Header.module.scss'
+import AddIcon from '../icons/AddIcon';
 
 const Header = () => {
   const token = useAuthStore((state) => state.token);
@@ -17,7 +18,7 @@ const Header = () => {
       </nav>
       <SearchForm />
       <nav>
-        <Button type='nav'>Add</Button>
+        <Button type='nav'><AddIcon />Add</Button>
         {token ? (
           <UserProfileButton />
         ) : (

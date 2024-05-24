@@ -64,10 +64,8 @@ table {
 a {
 	text-decoration: none;
 }
-img, a {
+img, a, button {
 	-webkit-user-drag: none;
-}
-img {
 	user-select: none;
 }
 button, input {
@@ -86,4 +84,9 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+input {
+	&::placeholder {
+		user-select: none;
+	}
 }

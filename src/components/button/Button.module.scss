@@ -1,6 +1,6 @@
 @import '/src/vars.scss';
 
-.filterButton, .listSwitcherButton, .listControlButton, .controlIcon  {
+.filterButton, .listSwitcherButton, .listControlButton, .controlIcon, .actionButton {
   background-color: $dark-button-color;
   transition: scale ease 0.2s;
   border-radius: 10px;
@@ -31,6 +31,7 @@
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
+  font-size: 16px;
   transition: background-color 0.1s linear;
 
   &:hover {
@@ -67,3 +68,43 @@
   }
 }
 
+.authTypeButton {
+  background-color: $dark-button-color;
+  padding: 20px 10px;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.1s linear;
+
+  .active {
+    filter: brightness(1.4);
+  }
+
+  &:not(.active) {
+    filter: brightness(0.6);
+  }
+
+  &:hover {
+    background-color: $dark-button-color-hover;
+  }
+
+  &:active {
+    background-color: $dark-button-color-active;
+  }
+
+  &:first-child {
+    border-radius: 10px 0 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 10px 0 0;
+  }
+}
+
+.actionButton {
+  font-size: 16px;
+  padding: 10px 40px;
+
+  &:hover {
+    scale: none;
+  }
+}

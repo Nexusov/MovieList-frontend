@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
-  type: 'nav' | 'filter' | 'listSwitcher' | 'listControl' | 'controlIcon';
+  type: 'action' | 'nav' | 'filter' | 'listSwitcher' | 'listControl' | 'controlIcon' | 'auth-type';
   children: ReactNode;
   isActive?: boolean
   title?: string;
@@ -16,8 +16,11 @@ const Button: React.FC<ButtonProps> = ({ type, children, onClick, isActive, titl
     const filterButton = isActive ? `${styles.filterButton} ${styles.active}` : styles.filterButton;
     const controlIcon = isActive ? `${styles.controlIcon} ${styles.active}` : styles.controlIcon;
     const listControlButton = isActive ? `${styles.listControlButton} ${styles.active}` : styles.listControlButton;
+    const authTypeButton = isActive ? `${styles.authTypeButton} ${styles.active}` : styles.authTypeButton;
     
     switch (type) {
+      case 'action':
+        return <button className={styles.actionButton} onClick={onClick}>{children}</button>
       case 'nav':
         return <button className={styles.navButton}>{children}</button>
       case 'filter':
@@ -28,6 +31,8 @@ const Button: React.FC<ButtonProps> = ({ type, children, onClick, isActive, titl
         return <button className={listControlButton} onClick={onClick}>{children}</button> 
       case 'controlIcon':
         return <button className={controlIcon} onClick={onClick} title={title}>{children}</button> 
+      case 'auth-type':
+        return <button className={authTypeButton} onClick={onClick} title={title}>{children}</button> 
       default:
         return <button>{children}</button>;
     }
