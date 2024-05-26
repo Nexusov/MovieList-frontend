@@ -2,19 +2,30 @@ import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useAuthStore } from '../../store/store';
 import s from './GoogleButton.module.scss';
+import { baseURL } from '../../config';
 
 const GoogleLoginButton: React.FC = () => {
   const setToken = useAuthStore((state) => state.setToken);
+  const setUser = useAuthStore((state) => state.setUser);
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
-        const result = await axios.get('http://localhost:3000/login/google/callback', {
+        const result = await axios.get(`${baseURL}/login/google/callback`, {
+          params: {
+            access_token: tokenResponse.access_token,
+          },
+        });
+        const token = result.data.token;
+        setToken(token);
+        console.log('Token after Google login:', token);
+        const userResponse = await axios.get(`${baseURL}/user/profile`, {
           headers: {
-            Authorization: `Bearer ${tokenResponse.access_token}`
+            Authorization: `Bearer ${token}`
           }
         });
-        setToken(result.data.token);
+        setUser(userResponse.data);
+        console.log('User profile after Google login:', userResponse.data);
       } catch (error) {
         console.error('Google login error:', error);
       }
@@ -41,7 +52,6 @@ const GoogleLoginButton: React.FC = () => {
         <span style={{ display: 'none' }}>Sign in with Google</span>
       </div>
     </button>
-
   );
 };
 

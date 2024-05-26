@@ -2,6 +2,7 @@
 
 *, *::before, *::after, html, body {
 	font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	scroll-behavior: smooth;
 	color: $primary-text-color;
 	box-sizing: border-box;
 	margin: 0;
@@ -64,7 +65,7 @@ table {
 a {
 	text-decoration: none;
 }
-img, a, button {
+img, a, button, li {
 	-webkit-user-drag: none;
 	user-select: none;
 }
@@ -77,7 +78,7 @@ button, input {
 		outline: none;
 	}
 }
-button, a, option, select {
+button, a, li, option, select {
 	cursor: pointer;
 }
 button {

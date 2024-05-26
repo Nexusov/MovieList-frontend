@@ -1,7 +1,32 @@
 @import '/src/vars.scss';
 
+.profileButton {
+  background-color: $dark-button-color;
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: background-color 0.1s linear;
+
+  &:hover {
+    background-color: $dark-button-color-hover;
+  }
+
+  &:active {
+    background-color: $dark-button-color-active;
+  }
+}
+
 .avatar {
-  width: 40px; 
+  width: 40px;
   height: 40px;
-  border-radius: 50%; 
+  border-radius: 50%;
+}
+
+.userName {
+  font-size: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100px;
 }

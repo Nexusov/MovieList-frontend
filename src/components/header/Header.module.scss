@@ -9,16 +9,14 @@
   gap: 10px;
   z-index: 110;
 
-  nav {
+  nav, a, button {
     display: flex;
     align-items: center;
     gap: 20px;
   }
 
   a, button {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    gap: 10px;
   }
 }
 

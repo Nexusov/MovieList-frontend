@@ -9,6 +9,18 @@ $dark-button-color: #2a2a2a;;
 $dark-button-color-hover: #363636;
 $dark-button-color-active: #242424;
 
+$errorColor: #e74c3c;
+
 $secondary-dark-color: #272727;
 
 $padding-horizontal-global: 300px;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -36,20 +36,10 @@
 }
 
 .error {
-  color: #e74c3c;
+  color: $errorColor;
   font-size: 14px;
   margin-top: 5px;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
   animation: fadeIn 0.2s ease-in-out forwards; 
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }

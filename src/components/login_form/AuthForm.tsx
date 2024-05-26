@@ -4,6 +4,8 @@ import axios from 'axios';
 import Button from '../button/Button';
 import Input from '../input/Input';
 import s from './AuthForm.module.scss';
+import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../../config';
 
 type AuthType = 'signin' | 'register';
 
@@ -16,6 +18,9 @@ const AuthForm = () => {
   const [nameError, setNameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const setToken = useAuthStore((state) => state.setToken);
+  const setUser = useAuthStore((state) => state.setUser);
+
+  const navigate = useNavigate();
 
   const clearErrors = () => {
     setEmailError('');
@@ -26,8 +31,17 @@ const AuthForm = () => {
   const register = async () => {
     clearErrors();
     try {
-      const response = await axios.post('http://localhost:3000/register', { name, email, password });
+      const response = await axios.post(`${baseURL}/register`, { name, email, password });
       setToken(response.data.token);
+      console.log('Token after register:', response.data.token);
+      const userResponse = await axios.get(`${baseURL}/user/profile`, {
+        headers: {
+          Authorization: `Bearer ${response.data.token}`
+        }
+      });
+      setUser(userResponse.data);
+      console.log('User profile after register:', userResponse.data);
+      navigate('/');
     } catch (error: unknown) {
       if (axios.isAxiosError(error) && error.response) {
         const message = error.response.data?.message || 'Registration error';
@@ -49,8 +63,17 @@ const AuthForm = () => {
   const login = async () => {
     clearErrors();
     try {
-      const response = await axios.post('http://localhost:3000/login', { email, password });
+      const response = await axios.post(`${baseURL}/login`, { email, password });
       setToken(response.data.token);
+      console.log('Token after login:', response.data.token);
+      const userResponse = await axios.get(`${baseURL}/user/profile`, {
+        headers: {
+          Authorization: `Bearer ${response.data.token}`
+        }
+      });
+      setUser(userResponse.data);
+      console.log('User profile after login:', userResponse.data);
+      navigate('/');
     } catch (error: unknown) {
       if (axios.isAxiosError(error) && error.response) {
         const message = error.response.data?.message || 'Login error';
@@ -81,7 +104,7 @@ const AuthForm = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail((e.target.value).trim())}
-            required
+            /* required */
             autoComplete='new-password'
           />
           {emailError && <div className={s.error}>{emailError}</div>}
@@ -93,7 +116,7 @@ const AuthForm = () => {
               placeholder='Name'
               value={name}
               onChange={(e) => setName((e.target.value).trim())}
-              required
+              /* required */
             />
             {nameError && <div className={s.error}>{nameError}</div>}
           </div>
@@ -104,7 +127,7 @@ const AuthForm = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            /* required */
           />
           {passwordError && <div className={s.error}>{passwordError}</div>}
         </div>

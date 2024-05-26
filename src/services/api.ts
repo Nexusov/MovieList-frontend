@@ -1,14 +1,14 @@
 import useRequest from "../hooks/useRequest";
-import { MediaItem, MovieSearchResponse, SearchItem, User } from "../types/types";
-import { transformMovie, transformSearchItem, transformUser } from "../utils/dataTransformers";
+import { MediaItem, MovieSearchResponse, SearchItem } from "../types/types";
+import { transformMovie, transformSearchItem, } from "../utils/dataTransformers";
 
 
-export const GetUserById = (id: User['id']) => {
+/* export const GetUserById = (id: User['id']) => {
   const { data, error, mutate, isLoading, isError } = useRequest<User>(`/user/${id}`);
   const userData = transformUser(data);
 
   return { userData, error, mutate, isLoading, isError }
-}
+} */
 
 export const GetMoviesBySearch = (title: SearchItem['titleEn']) => {
   const { data, error, mutate, isLoading, isError } = useRequest<MovieSearchResponse>(`/kp/movies/search?title=${encodeURIComponent(title)}`);

@@ -1,6 +1,6 @@
-import { MediaItem, SearchItem, User } from "../types/types";
+import { MediaItem, SearchItem } from "../types/types";
 
-export const transformUser = (user: User | undefined): User | undefined => {
+/* export const transformUser = (user: User | undefined): User | undefined => {
   if (!user) return
 
   return {
@@ -10,7 +10,7 @@ export const transformUser = (user: User | undefined): User | undefined => {
     password: user.password,
     photo: user.photo
   }
-}
+} */
 
 export const transformMovie = (movie: MediaItem | undefined): MediaItem | undefined => {
   if (!movie) return

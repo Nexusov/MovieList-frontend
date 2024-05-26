@@ -83,6 +83,10 @@
   p, a {
     font-size: 15px;
     color: #ffc107; 
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

@@ -2,20 +2,30 @@
 
 .dropdown {
   position: absolute;
-  padding: 5px 0;
   margin-top: 5px;
   top: 50px;
-  right: 50px;
+  right: 40px;
   font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: $secondary-dark-color;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 1;
+  overflow: hidden;
+  animation: fadeIn 0.2s ease-in-out forwards; 
 
   li {
-    padding: 8px 20px;
-    user-select: none;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-wrap: nowrap;
+    transition: background-color 0.2s ease; 
+
+    > * {
+      display: flex;
+      align-items: center;
+    }
 
     &:hover {
       background-color: #3b3b3b;
@@ -25,4 +35,9 @@
       background-color: #303030;
     }
   }
+}
+
+.logOut {
+  color: #ff4b5c;
+  font-weight: 500;
 }

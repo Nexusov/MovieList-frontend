@@ -1,12 +1,11 @@
 import axios, { AxiosError } from 'axios';
 import useSWR, { SWRResponse } from 'swr';
+import { baseURL } from '../config';
 
 interface FetchResponse<T> extends SWRResponse<T, AxiosError> {
   isLoading: boolean;
   isError: boolean;
 }
-
-const baseURL = import.meta.env.VITE_BASE_API_URL;
 
 const _fetcher = async <T>(url: string): Promise<T> => {
   try {

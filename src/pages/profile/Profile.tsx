@@ -1,6 +1,10 @@
+import LayoutTemplate from "../../components/layout_template/LayoutTemplate"
+
 const Profile = () => {
   return (
-    <div>Profile page</div>
+    <LayoutTemplate section="User Profile">
+      <div>User profile</div>
+    </LayoutTemplate>
   )
 }
 
