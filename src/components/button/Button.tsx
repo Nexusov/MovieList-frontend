@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
-  type: 'action' | 'nav' | 'filter' | 'listSwitcher' | 'listControl' | 'controlIcon' | 'auth-type';
+  type: 'action' | 'action-submit' | 'nav' | 'filter' | 'listSwitcher' | 'listControl' | 'controlIcon' | 'auth-type';
   children: ReactNode;
   isActive?: boolean
   title?: string;
@@ -21,6 +21,8 @@ const Button: React.FC<ButtonProps> = ({ type, children, onClick, isActive, titl
     switch (type) {
       case 'action':
         return <button className={styles.actionButton} onClick={onClick}>{children}</button>
+      case 'action-submit':
+        return <button className={styles.actionButton} onClick={onClick} type='submit'>{children}</button>
       case 'nav':
         return <button className={styles.navButton}>{children}</button>
       case 'filter':

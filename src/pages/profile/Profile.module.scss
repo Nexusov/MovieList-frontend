@@ -1,0 +1,27 @@
+@import '/src/vars.scss';
+
+.container {
+  padding: 0 $padding-horizontal-global;
+}
+
+.userInfoContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.userTextContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+
+  h1 {
+    font-size: 25px;
+    font-weight: 500;
+  }
+}
+
+.userPhoto {
+  width: 120px;
+  border-radius: 10px
+}

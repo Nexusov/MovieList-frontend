@@ -27,14 +27,14 @@ const MovieInfo: React.FC<MovieInfoProps> = ({ movie, onClose  }) => {
   return ReactDOM.createPortal(
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <h2>{titleEn}</h2>
         <img className={styles.poster} draggable="false" src={posterURL} alt={`${titleEn} poster`} />
+        <h2>{titleEn}</h2>
         <p>Release Year: {year}</p>
 {/*         <p>Watched at: {watchedAt}</p>
         <p>Your Rating: {userRating}</p> */}
         <a href={`https://www.imdb.com/title/${imdbID}/`} target='_blank' title='IMDb rating'>IMDb: {ratingIMDb}</a>
         <a href={`https://www.kinopoisk.ru/film/${kinopoiskID}/`} target='_blank' title='Kinopoisk rating'>КП: {ratingKp}</a>
-        <button onClick={onClose}>✕</button>
+        <button className={styles.closeButton} onClick={onClose}>✕</button>
       </div>
     </div>,
     document.body

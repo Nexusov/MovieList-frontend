@@ -133,10 +133,14 @@ const AuthForm = () => {
         </div>
       </div>
       <div className={s.loginButtonContainer}>
-        {activeForm === 'signin' ? <Button type='action' onClick={login}>Log in</Button> : <Button type='action' onClick={register}>Register</Button>}
+        {activeForm === 'signin' ? <Button type='action-submit' onClick={login}>Log in</Button> : <Button type='action-submit' onClick={register}>Register</Button>}
       </div>
     </div>
   );
 }
 
 export default AuthForm;
+
+
+//! TODO: Replace the multiple else if with switch case
+//! Fix Enter doesn't affect on LoginButton (wrap component in <form>)

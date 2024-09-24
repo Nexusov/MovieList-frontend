@@ -3,14 +3,14 @@ import DropdownProfile from '../dropdown/DropdownProfile';
 import { useEffect, useRef, useState } from 'react';
 import s from './UserProfileButton.module.scss'
 
+export const defaultAvatarURL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png'
+
 const UserProfileButton: React.FC = () => {
   const user = useAuthStore((state) => state.user);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const loadUser = useAuthStore((state) => state.loadUser);
   const ref = useRef<HTMLButtonElement | null>(null);
 
-  const defaultAvatarURL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png'
-  
   useEffect(() => {
     loadUser();
   }, [loadUser]);
@@ -36,7 +36,7 @@ const UserProfileButton: React.FC = () => {
 
   return (
     <button className={s.profileButton} onClick={toggleDropdown} ref={ref}>
-      <img src={user.photo ?? defaultAvatarURL} alt={`${user.name}'s avatar`} className={s.avatar} />
+      <img src={user.photo ?? defaultAvatarURL} alt={`${user.name}'s photo`} className={s.avatar} />
       <p className={s.userName}>{user.name ?? 'Your Name'}</p>
       {isOpen && <DropdownProfile />}
     </button>

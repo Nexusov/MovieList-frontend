@@ -27,12 +27,24 @@
       align-items: center;
     }
 
+    svg {
+      transition: transform 0.1s linear;
+    }
+
     &:hover {
       background-color: #3b3b3b;
+
+      svg {
+        transform: scale(1.05);
+      }
     }
     
     &:active {
       background-color: #303030;
+
+      svg {
+        transform: scale(0.95);
+      }
     }
   }
 }
@@ -40,4 +52,8 @@
 .logOut {
   color: #ff4b5c;
   font-weight: 500;
+}
+
+.navLink {
+  gap: 0 !important;
 }

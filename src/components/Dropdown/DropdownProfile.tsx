@@ -15,7 +15,7 @@ const DropdownProfile = () => {
 
   return (
     <ul className={s.dropdown} style={{ right: -8 }}>
-      <li>
+      <li className={s.navLink}>
         <Link to="/profile"><UserIcon />Profile</Link>
       </li>
       <li className={s.logOut} onClick={handleLogout}><LogOutIcon /> Log Out</li>

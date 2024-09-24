@@ -25,7 +25,10 @@ const _fetcher = async <T>(url: string): Promise<T> => {
 };
 
 const useRequest = <T>(key: string): FetchResponse<T> => {
-  const { data, error, mutate, isValidating, isLoading } = useSWR<T, AxiosError>(baseURL + key, _fetcher);
+  const { data, isLoading, error, mutate: mutate, isValidating } = useSWR<T, AxiosError>(baseURL + key, _fetcher, {
+    revalidateOnFocus: false,
+  }) 
+
   const isError = error !== undefined;
 
   return { data, error, mutate, isLoading, isError, isValidating };

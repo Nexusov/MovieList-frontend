@@ -28,7 +28,9 @@ const Header = () => {
       </nav>
       <SearchForm />
       <nav>
-        <Button type='nav'><AddIcon />Add</Button>
+        <NavLink to="/add">
+          <Button type='nav'><AddIcon />Add</Button>
+        </NavLink>
         {token ? (
           <UserProfileButton />
         ) : (
