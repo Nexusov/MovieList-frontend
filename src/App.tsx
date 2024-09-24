@@ -7,9 +7,15 @@ import { useAuthStore } from './store/store';
 
 const Profile = lazy(() => import('./pages/profile/Profile'));
 const Login = lazy(() => import('./pages/login/Login'));
+const AddMovie = lazy(() => import('./pages/add_movie/AddMovie'));
 const Page404 = lazy(() => import('./pages/404/Page404'));
 
-const PrivateRoute = ({ element }: { element: JSX.Element }) => {
+const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
+  const token = useAuthStore((state) => state.token);
+  return token ? element : <Navigate to="/login" />;
+};
+
+const GuestRoute = ({ element }: { element: JSX.Element }) => {
   const token = useAuthStore((state) => state.token);
   return token ? <Navigate to="/" /> : element;
 };
@@ -21,11 +27,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/profile',
-    element: <Suspense fallback={<Loader />}><Profile /></Suspense>,
+    element: <ProtectedRoute element={<Suspense fallback={<Loader />}><Profile /></Suspense>} />,
   },
   {
     path: '/login',
-    element: <PrivateRoute element={<Suspense fallback={<Loader />}><Login /></Suspense>} />,
+    element: <GuestRoute element={<Suspense fallback={<Loader />}><Login /></Suspense>} />,
+  },
+  {
+    path: '/add',
+    element: <ProtectedRoute element={<Suspense fallback={<Loader />}><AddMovie /></Suspense>} />,
   },
   {
     path: '*',
