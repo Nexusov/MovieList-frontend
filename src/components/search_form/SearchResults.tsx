@@ -4,6 +4,7 @@ import styles from './SearchResults.module.scss';
 import { SearchItem } from '../../types/types';
 import Loader from '../loader/Loader';
 import { AxiosError } from 'axios';
+import { addToWatched, addToWatchList } from '../../services/movieService';
 
 interface SearchResultsProps {
   data: SearchItem[];
@@ -26,7 +27,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ data, isLoading, isError,
       document.removeEventListener('keydown', handleEscape);
     };
   }, [onClose]);
-  
+
   if (isLoading) {
     return <div className={styles.results}><Loader /></div>;
   }
@@ -40,6 +41,27 @@ const SearchResults: React.FC<SearchResultsProps> = ({ data, isLoading, isError,
   }
 
   console.log(data)
+
+  // TODO: fix hardcoded movie rating in addToWatched
+  // TODO: use Button component
+
+  const handleAddToWatched = async (movieId: string, userRating = 5) => {
+    try {
+      const message = await addToWatched(movieId, userRating);
+      console.log(message);
+    } catch (error) {
+      console.error('Error adding movie to watched:', error);
+    }
+  };
+
+  const handleAddToWatchList = async (movieId: string) => {
+    try {
+      const message = await addToWatchList(movieId);
+      console.log(message);
+    } catch (error) {
+      console.error('Error adding movie to watchlist:', error);
+    }
+  };
 
   return ReactDOM.createPortal(
     <div className={styles.modalOverlay} onClick={onClose}>
@@ -56,6 +78,20 @@ const SearchResults: React.FC<SearchResultsProps> = ({ data, isLoading, isError,
               <p>Metacritic: {item.ratingMetacritic}</p>
               <p>{item.type}</p>
               <p>{item.shortDescription}</p>
+              <div className={styles.buttonsContainer}>
+                <button
+                  // @ts-expect-error onClick void
+                  onClick={() => handleAddToWatched(item.kinopoiskID || item.imdbID)}
+                >
+                  Add to WatchLater
+                </button>
+                <button
+                  // @ts-expect-error onClick void
+                  onClick={() => handleAddToWatchList(item.kinopoiskID || item.imdbID)}
+                >
+                  Add to WatchList
+                </button>
+              </div>
             </div>
           </div>
         ))}

@@ -1,37 +1,37 @@
-import { useState } from 'react';
 import Button from '../button/Button'
 import styles from './FilterTypeButtons.module.scss'
+import { useFilterStore } from '../../store/store';
 
-type FilterType = 'All' | 'Movies' | 'Series'
+export type FilterType = 'All' | 'Movies' | 'Series'
 
 const FilterTypeButtons = () => {
-  const [activeFilter, setActiveFilter] = useState<FilterType>('All');
+  const { filterType, setFilterType } = useFilterStore();
 
   return (
     <div className={styles.filterTypeButtons}>
       <Button
         type='filter'
-        isActive={activeFilter === 'All'}
-        onClick={() => setActiveFilter('All')}
+        isActive={filterType === 'All'}
+        onClick={() => setFilterType('All')}
       >
         All
       </Button>
       <Button
         type='filter'
-        isActive={activeFilter === 'Movies'}
-        onClick={() => setActiveFilter('Movies')}
+        isActive={filterType === 'Movies'}
+        onClick={() => setFilterType('Movie')}
       >
         Movies
       </Button>
       <Button
         type='filter'
-        isActive={activeFilter === 'Series'}
-        onClick={() => setActiveFilter('Series')}
+        isActive={filterType === 'Series'}
+        onClick={() => setFilterType('Series')}
       >
         Series
       </Button>
     </div>
-  )
-}
+  );
+};
 
 export default FilterTypeButtons

@@ -1,11 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import SearchForm from '../search_form/SearchForm';
-import Button from '../button/Button';
 import Logo from '../logo/Logo';
 import { useAuthStore } from '../../store/store';
 import UserProfileButton from '../button/UserProfileButton';
 import SignInIcon from '../icons/SignInIcon';
-import AddIcon from '../icons/AddIcon';
 import { useEffect } from 'react';
 import styles from './Header.module.scss';
 
@@ -28,9 +26,6 @@ const Header = () => {
       </nav>
       <SearchForm />
       <nav>
-        <NavLink to="/add">
-          <Button type='nav'><AddIcon />Add</Button>
-        </NavLink>
         {token ? (
           <UserProfileButton />
         ) : (

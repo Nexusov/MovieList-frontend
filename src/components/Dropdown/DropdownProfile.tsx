@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
-import { googleLogout } from '@react-oauth/google'; 
-import { useAuthStore } from '../../store/store'; 
+import { googleLogout } from '@react-oauth/google';
+import { useAuthStore } from '../../store/store';
 import s from './Dropdown.module.scss';
 import UserIcon from '../icons/UserIcon';
 import LogOutIcon from '../icons/LogOutIcon';
 
 const DropdownProfile = () => {
-  const logout = useAuthStore((state) => state.logout); 
+  const logout = useAuthStore((state) => state.logout);
 
   const handleLogout = () => {
     googleLogout();
-    logout(); 
+    logout();
+    window.location.reload()
   };
 
   return (

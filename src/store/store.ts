@@ -2,6 +2,15 @@ import { create } from 'zustand';
 import axios from 'axios';
 import { User } from '../types/types';
 import { baseURL } from '../config';
+import { FilterType } from '../components/filter_bar/FilterTypeButtons';
+
+
+interface FilterState {
+  filterType: FilterType;
+  setFilterType: (filterType: FilterType) => void;
+  isReversed: boolean;
+  toggleReverse: () => void;
+}
 
 interface AuthState {
   token: string | null;
@@ -42,4 +51,11 @@ export const useAuthStore = create<AuthState>((set) => ({
     localStorage.removeItem('token');
     set({ token: null, user: null });
   },
+}));
+
+export const useFilterStore = create<FilterState>((set) => ({
+  filterType: 'All',
+  setFilterType: (filterType) => set({ filterType }),
+  isReversed: false,
+  toggleReverse: () => set((state) => ({ isReversed: !state.isReversed })),
 }));

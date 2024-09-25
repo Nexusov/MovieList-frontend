@@ -1,12 +1,12 @@
 import styles from './Dropdown.module.scss'
 
-const filters: string[] = ["Movies", "Series", "Watch List"]
+const filters: string[] = ["Movies", "Series"]
 
 const Dropdown = () => {
   return (
     <ul className={styles.dropdown}>
       {filters.map(item => (
-        <li key={item}>{item}</li> 
+        <li key={item}>{item}</li>
       ))}
     </ul>
   )
